@@ -1,38 +1,117 @@
+@font-face {
+  font-family:Montserrat-Regular;
+  src: url(../public/fonts/Montserrat/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family:Montserrat-Medium;
+  src: url(../public/fonts/Montserrat/Montserrat-Medium.ttf);
+}
+@font-face {
+  font-family:Montserrat-Bold;
+  src: url(../public/fonts/Montserrat/Montserrat-Bold.ttf);
+}
+body{font-family:Montserrat-Regular;}
 .App {
-  text-align: center;
+  padding-top: 93px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  box-shadow: 0 14px 34px -10px rgba(14,21,28,.25), 0 0 4px 0 rgba(13,16,7,.04), 0 7px 15px -2px rgba(13,16,7,.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a.navbar-brand {
+  max-width: 150px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a.navbar-brand img {
+  max-width: 100%;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding: 0 20px;
+  color: rgb(0 0 0);
+  font-family:Montserrat-Medium;
+}
+.navbar-expand-lg .navbar-nav .nav-link.active {
+  color: #9E005D;
+}
+ul.top-nav-right {
+  padding: 0;
+  margin: 0;
+  list-style: none;
   display: flex;
-  flex-direction: column;
+  gap: 40px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family:Montserrat-Medium;
+}
+.try-btn {
+  border-radius: 30px;
+  border: 1px solid #9E005D;
+  background: #9E005D;
+  color: #fff;
+}
+/*********************************/
+section.hero-bnr {
+  background: #9e005d;
+  padding-bottom: 80px;
+  padding-top: 80px;
+}
+.gm-header h1 {
+  font-size: 60px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 15px;
+}
+.panel-content {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+aside.sub-heading {
+  color: #fff;
+  font-size: 24px;
+  line-height: 36px;
 }
 
-.App-link {
-  color: #61dafb;
+/*******************/
+.footer-btm {
+  text-align: center;
+  border-top: 1px solid #cdcdcd;
+  padding: 20px;
+  margin-top: 50px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer-btm img {
+  max-width: 150px;
+  margin: 0 auto 15px;
+}
+.footer-btm p {
+  margin: 0;
+}
+.newsletter-subscribe {
+  display: flex;
+  max-width: 500px;
+}
+.newsletter-subscribe .form-control {
+  height: 50px;
+  border-radius: 0;
+}
+.newsletter-subscribe .signup-submit {
+  background: #9e005d;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+.footer-head {
+  padding: 0 0 15px;
+  border-bottom: 1px solid #cdcdcd;
+  margin-bottom: 20px;
+}
+.footer-head h3 {
+  margin: 0;
+  font-weight: 600;
+}
+.footer-subhead h4 {
+  margin: 0 0 15px;
+  font-weight: 600;
 }
