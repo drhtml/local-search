@@ -1,6 +1,6 @@
 import React from 'react'
 import mainLogo from '../images/dd-log-10-years.png' 
-
+import StarRating from '../images/star-dd.svg' 
 export default function LocationSearch() { 
     // const popover = new bootstrap.Popover('.example-popover', {
     //     container: 'body'
@@ -123,11 +123,11 @@ export default function LocationSearch() {
                     <div className='col-lg-5'>
                         <div className='review-card'>
                             <div className='star-rating'> 
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star"></span>
-                                <span className="fa fa-star"></span>
+                                <div className='star-rating-icon'><img src={StarRating} /></div>
+                                <div className='star-rating-icon'><img src={StarRating} /></div>
+                                <div className='star-rating-icon'><img src={StarRating} /></div>
+                                <div className='star-rating-icon'><img src={StarRating} /></div>
+                                <div className='star-rating-icon'><img src={StarRating} /></div>
                             </div>
                             <div className='num-rating'>4.8 / 5</div>
                             <div className='clients-reviews'>from 125+ reviews on Capterra</div>
