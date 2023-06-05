@@ -1,10 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react' 
+import axios from 'axios';
+
 import mainLogo from '../images/dd-log-10-years.png' 
 import StarRating from '../images/star-dd.svg' 
-export default function LocationSearch() { 
-    // const popover = new bootstrap.Popover('.example-popover', {
-    //     container: 'body'
-    // })
+import GoogleGLogo from '../images/Google-Logo.png'
+
+export default function LocationSearch() {  
+    const [searchtext, setSearchtext] = useState("");
+    const [searchCity, setSearchCity] = useState("");
+    const [searchCountry, setsearchCountry] = useState("");
+    const [searchLang, setsearchLang] = useState(""); 
+    
+    function GoogleSearchAPI() {
+        //console.log(searchtext); 
+        var data = JSON.stringify({
+        "location":  `${searchCity}, ${searchCountry}`,
+        "q": `${searchtext}`,
+        "hl": `${searchLang}`,
+        "gl": `${searchCountry}`,
+        "gws_rd": "cr",
+        "pws": "0"
+        });
+
+        var config = {
+        method: 'post',
+        url: 'https://8as62tzq44.execute-api.ap-south-1.amazonaws.com/Production',
+        //withCredentials: false,
+        headers: { 
+            'Content-Type': 'application/json', 
+            //'Access-Control-Allow-Origin': '*'
+        },
+        data : data
+        };
+
+        axios(config)
+        .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
+    }
+      
   return (
     <>
         <section className='hero-bnr'>
@@ -29,17 +66,17 @@ export default function LocationSearch() {
                     <div className='loaction-search-form'>
                         <form>
                             <div className="form-floating">
-                                <input type="text" className="form-control" id="textEnter" placeholder="Enter your search term" />
+                                <input type="text" onChange={(e) => setSearchtext(e.target.value)} value={searchtext} className="form-control" id="textEnter" placeholder="Enter your search term" />
                                 <label for="textEnter">Enter your search term</label>
                             </div>
                             <div className="form-floating">
-                                <input type="text" className="form-control" id="searchLocation" placeholder="Enter a search location (e.g. Chicago, IL; 90219 CA)" />
+                                <input type="text" onChange={(e) => setSearchCity(e.target.value)} value={searchCity} className="form-control" id="searchLocation" placeholder="Enter a search location (e.g. Chicago, IL; 90219 CA)" />
                                 <label for="searchLocation">Enter a search location (e.g. Chicago, IL; 90219 CA)</label>
                             </div>
                             <div className='row'>
                                 <div className='col-md-6'>
                                     <div className="form-floating">
-                                        <select className="form-select" id="SelectCountry">
+                                        <select className="form-select" id="SelectCountry" onChange={(e) => setsearchCountry(e.target.value)} value={searchCountry}>
                                             <option value="0">India</option>
                                             <option value="1" selected>United State</option>
                                             <option value="2">Country</option>
@@ -50,11 +87,8 @@ export default function LocationSearch() {
                                 </div>
                                 <div className='col-md-6'>
                                     <div className="form-floating">
-                                        <select className="form-select" id="SelectLanguage">
-                                            <option value="0" selected>English</option>
-                                            <option value="1">Hindi</option>
-                                            <option value="2">Urdu</option>
-                                            <option value="3">Arebic</option>
+                                        <select className="form-select" id="SelectLanguage" onChange={(e) => setsearchLang(e.target.value)} value={searchLang}>
+                                            <option value="EN" selected>English</option> 
                                         </select>
                                         <label for="SelectCountry">Language</label>
                                     </div>
@@ -71,7 +105,7 @@ export default function LocationSearch() {
                                     <label className="form-check-label" for="RadioGoogleMaps">Google Maps</label>
                                 </div>
                             </div>
-                            <button type="submit" className="btn form-submit-btn">Check search results</button>
+                            <button type="button" className="btn form-submit-btn" onClick={GoogleSearchAPI}>Check search results</button>
                         </form>
                     </div>
                 </div>
@@ -93,26 +127,26 @@ export default function LocationSearch() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Digital Agency</td>
-                                    <td>Delhi</td>
-                                    <td>EN</td>
-                                    <td>GOOGLE</td>
+                                    <td>{searchtext}</td>
+                                    <td>{searchCity}</td>
+                                    <td>{searchLang}</td>
+                                    <td>GOOGLE</td> 
                                 </tr> 
                             </tbody>
                             </table>
                         <h4>Please use the page links below to view your localized search results.</h4>
                         <ul className='pagelist'>
-                            <li><a href='#'>Page 1</a></li>
-                            <li><a href='#'>Page 2</a></li>
-                            <li><a href='#'>Page 3</a></li>
-                            <li><a href='#'>Page 4</a></li>
-                            <li><a href='#'>Page 5</a></li>
-                            <li><a href='#'>Page 6</a></li>
-                            <li><a href='#'>Page 7</a></li>
-                            <li><a href='#'>Page 8</a></li>
-                            <li><a href='#'>Page 9</a></li>
-                            <li><a href='#'>Page 10</a></li> 
-                        </ul>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 1</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 2</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 3</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 4</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 5</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 6</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 7</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 8</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 9</a></li>
+                            <li><a href='#'><img src={GoogleGLogo} /> Page 10</a></li> 
+                        </ul>  
                     </div>
                 </div>
             </div>

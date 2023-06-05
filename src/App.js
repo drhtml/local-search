@@ -1,7 +1,7 @@
 import './App.css';
-import Footer from './Footer/Footer';
-import Header from './Header/Header';
-import LocationSearch from './LocationSearch/LocationSearch';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
+import LocationSearch from './Components/LocationSearch';
 
 function App() {
   return (
