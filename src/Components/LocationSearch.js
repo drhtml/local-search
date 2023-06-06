@@ -1,21 +1,24 @@
 import React, { useState } from 'react' 
 import axios from 'axios';
+//import { Link } from 'react-router'
 
 import mainLogo from '../images/dd-log-10-years.png' 
 import StarRating from '../images/star-dd.svg' 
 import GoogleGLogo from '../images/Google-Logo.png'
 
 export default function LocationSearch() {  
-    const [searchtext, setSearchtext] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
     const [searchCity, setSearchCity] = useState("");
     const [searchCountry, setsearchCountry] = useState("");
-    const [searchLang, setsearchLang] = useState(""); 
+    const [searchLang, setsearchLang] = useState("");
+    const [searchEngine, setsearchEngine] = useState(""); 
+    
     
     function GoogleSearchAPI() {
-        //console.log(searchtext); 
+        //console.log(searchTerm); 
         var data = JSON.stringify({
         "location":  `${searchCity}, ${searchCountry}`,
-        "q": `${searchtext}`,
+        "q": `${searchTerm}`,
         "hl": `${searchLang}`,
         "gl": `${searchCountry}`,
         "gws_rd": "cr",
@@ -24,11 +27,11 @@ export default function LocationSearch() {
 
         var config = {
         method: 'post',
-        url: 'https://8as62tzq44.execute-api.ap-south-1.amazonaws.com/Production',
+        url: 'https://8as62tzq44.execute-api.ap-south-1.amazonaws.com/Production/',
         //withCredentials: false,
         headers: { 
             'Content-Type': 'application/json', 
-            //'Access-Control-Allow-Origin': '*'
+            //'Access-Control-Allow-Origin': '*' 
         },
         data : data
         };
@@ -40,7 +43,25 @@ export default function LocationSearch() {
         .catch(function (error) {
         console.log(error);
         });
-    }
+    } 
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        GoogleSearchAPI();  
+        //
+        if (e.key === "Enter") {
+          e.preventDefault();
+          handleSearch();
+        } 
+        // const response = {
+        //     statusCode: 200,
+        //     headers: {
+        //         "Access-Control-Allow-Headers" : "Content-Type",
+        //         "Access-Control-Allow-Origin": "http://localhost:3000/",
+        //         "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+        //     }
+        // };
+        // return response; 
+    };
       
   return (
     <>
@@ -66,46 +87,48 @@ export default function LocationSearch() {
                     <div className='loaction-search-form'>
                         <form>
                             <div className="form-floating">
-                                <input type="text" onChange={(e) => setSearchtext(e.target.value)} value={searchtext} className="form-control" id="textEnter" placeholder="Enter your search term" />
-                                <label for="textEnter">Enter your search term</label>
+                                <input type="text" onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} className="form-control" id="textEnter" placeholder="Enter your search term" />
+                                <label htmlFor="textEnter">Enter your search term</label>
                             </div>
                             <div className="form-floating">
                                 <input type="text" onChange={(e) => setSearchCity(e.target.value)} value={searchCity} className="form-control" id="searchLocation" placeholder="Enter a search location (e.g. Chicago, IL; 90219 CA)" />
-                                <label for="searchLocation">Enter a search location (e.g. Chicago, IL; 90219 CA)</label>
+                                <label htmlFor="searchLocation">Enter a search location (e.g. Chicago, IL; 90219 CA)</label>
                             </div>
                             <div className='row'>
                                 <div className='col-md-6'>
                                     <div className="form-floating">
                                         <select className="form-select" id="SelectCountry" onChange={(e) => setsearchCountry(e.target.value)} value={searchCountry}>
-                                            <option value="0">India</option>
-                                            <option value="1" selected>United State</option>
-                                            <option value="2">Country</option>
-                                            <option value="3">Country</option>
+                                            <option value="IN">India</option>
+                                            <option value="USA">United State</option>
+                                            <option value="UK">United Kingdom</option>
+                                            <option value="UAE">United Arab Emirates</option>
                                         </select>
-                                        <label for="SelectCountry">Country</label>
+                                        <label htmlFor="SelectCountry">Country</label>
                                     </div>
                                 </div>
                                 <div className='col-md-6'>
                                     <div className="form-floating">
                                         <select className="form-select" id="SelectLanguage" onChange={(e) => setsearchLang(e.target.value)} value={searchLang}>
-                                            <option value="EN" selected>English</option> 
+                                            <option value="English">English</option> 
+                                            <option value="Hindi">Hindi</option> 
+                                            <option value="Arabic">Arabic</option> 
                                         </select>
-                                        <label for="SelectCountry">Language</label>
+                                        <label htmlFor="SelectCountry">Language</label>
                                     </div>
                                 </div>
                             </div>
                             <h5 className='choose-search-engine'>Choose a Search Engine</h5>
                             <div className='select-search-engine'>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="RadioGoogleSearch" id="RadioGoogleSearch" checked />
-                                    <label className="form-check-label" for="RadioGoogleSearch">Google Search</label>
+                                    <input className="form-check-input" type="radio" name="RadioGoogleSearch" id="RadioGoogleSearch"  onChange={(e) => setsearchEngine(e.target.value)} value={searchEngine}  />
+                                    <label className="form-check-label" htmlFor="RadioGoogleSearch">Google Search</label>
                                 </div>
-                                <div className="form-check">
+                                {/* <div className="form-check">
                                     <input className="form-check-input" type="radio" name="RadioGoogleSearch" id="RadioGoogleMaps" />
-                                    <label className="form-check-label" for="RadioGoogleMaps">Google Maps</label>
-                                </div>
+                                    <label className="form-check-label" htmlFor="RadioGoogleMaps">Google Maps</label>
+                                </div> */}
                             </div>
-                            <button type="button" className="btn form-submit-btn" onClick={GoogleSearchAPI}>Check search results</button>
+                            <button type="button" className="btn form-submit-btn" onClick={handleSearch}>Check search results</button>
                         </form>
                     </div>
                 </div>
@@ -116,36 +139,29 @@ export default function LocationSearch() {
                 <div className='row'>
                     <div className='col localized-search-inner'>
                         <h2>Here are your Localized search results</h2> 
-                        <table class="table">
+                        <table className="table">
                             <thead>
                                 <tr>
                                     <th>Search Term</th>
                                     <th>Location</th>
                                     <th>Language</th>
+                                    <th>Country</th> 
                                     <th>Search Engine</th> 
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{searchtext}</td>
+                                    <td>{searchTerm}</td>
                                     <td>{searchCity}</td>
                                     <td>{searchLang}</td>
-                                    <td>GOOGLE</td> 
+                                    <td>{searchCountry}</td> 
+                                    <td>{searchEngine}</td> 
                                 </tr> 
                             </tbody>
                             </table>
                         <h4>Please use the page links below to view your localized search results.</h4>
                         <ul className='pagelist'>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 1</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 2</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 3</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 4</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 5</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 6</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 7</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 8</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 9</a></li>
-                            <li><a href='#'><img src={GoogleGLogo} /> Page 10</a></li> 
+                            <li> <a href={'/'} target='_blank'><img src={GoogleGLogo} alt='' /> View Search Results</a> </li>  
                         </ul>  
                     </div>
                 </div>
@@ -157,15 +173,15 @@ export default function LocationSearch() {
                     <div className='col-lg-5'>
                         <div className='review-card'>
                             <div className='star-rating'> 
-                                <div className='star-rating-icon'><img src={StarRating} /></div>
-                                <div className='star-rating-icon'><img src={StarRating} /></div>
-                                <div className='star-rating-icon'><img src={StarRating} /></div>
-                                <div className='star-rating-icon'><img src={StarRating} /></div>
-                                <div className='star-rating-icon'><img src={StarRating} /></div>
+                                <div className='star-rating-icon'><img src={StarRating} alt='' /></div>
+                                <div className='star-rating-icon'><img src={StarRating} alt='' /></div>
+                                <div className='star-rating-icon'><img src={StarRating} alt='' /></div>
+                                <div className='star-rating-icon'><img src={StarRating} alt='' /></div>
+                                <div className='star-rating-icon'><img src={StarRating} alt='' /></div>
                             </div>
                             <div className='num-rating'>4.8 / 5</div>
                             <div className='clients-reviews'>from 125+ reviews on Capterra</div>
-                            <img src={mainLogo} />
+                            <img src={mainLogo} alt='' />
                         </div>
                     </div>
                     <div className='col-lg-7'>

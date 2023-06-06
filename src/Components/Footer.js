@@ -18,9 +18,9 @@ export default function Footer() {
                             <div className='footer-text'>
                                 <p>Get the latest local SEO news, research, and tactical advice sent to your inbox.</p>
                             </div>
-                            <form action="#" method="post" id="" name="" class="newsletter-subscribe" target="">
-                                <input type="email" value="" name="EMAIL" class="form-control" id="" placeholder="Enter your email address" required="" />
-                                <input type="submit" value="Subscribe" name="subscribe" class="btn signup-submit" id=""  />
+                            <form action="#" method="post" id="" name="" className="newsletter-subscribe" target="">
+                                <input type="email" name="EMAIL" className="form-control" id="" placeholder="Enter your email address" required="" />
+                                <button type="button" value="Subscribe" name="subscribe" className="btn signup-submit" id=""></button>
                             </form>
                         </div>
                     </div>
@@ -47,7 +47,7 @@ export default function Footer() {
             <div className='container-fluid'>
                 <div className='row'>
                     <div className='col footer-btm'>
-                        <img src={mainLogo} />
+                        <img src={mainLogo} alt='' />
                         <p>© 2023 Dignitas Digital Pvt. Ltd.</p>
                     </div>
                 </div>
