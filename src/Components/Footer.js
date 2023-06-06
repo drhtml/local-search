@@ -20,7 +20,7 @@ export default function Footer() {
                             </div>
                             <form action="#" method="post" id="" name="" className="newsletter-subscribe" target="">
                                 <input type="email" name="EMAIL" className="form-control" id="" placeholder="Enter your email address" required="" />
-                                <button type="button" value="Subscribe" name="subscribe" className="btn signup-submit" id=""></button>
+                                <button type="button" name="subscribe" className="btn signup-submit" id="">Subscribe</button>
                             </form>
                         </div>
                     </div>
