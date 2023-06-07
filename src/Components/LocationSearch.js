@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-//import { Link } from 'react-router'
+import Countries from './countries.json';
+import Language from './language.json';
 
 import mainLogo from '../images/dd-log-10-years.png'
 import StarRating from '../images/star-dd.svg'
@@ -104,21 +105,29 @@ export default function LocationSearch() {
                                 <div className='row'>
                                     <div className='col-md-6'>
                                         <div className="form-floating">
-                                            <select className="form-select" id="SelectCountry" onChange={(e) => setsearchCountry(e.target.value)} value={searchCountry}>
-                                                <option value="India">India</option>
-                                                <option value="USA">United State</option>
-                                                <option value="UK">United Kingdom</option>
-                                                <option value="UAE">United Arab Emirates</option>
-                                            </select>
+                                            <select className="form-select" id="SelectCountry" onChange={(e) => setsearchCountry(e.target.value)} value={searchCountry}  key={ Countries.name }>
+                                                 
+                                                {
+                                                    Countries.map( Countries => {
+                                                        return(
+                                                            <option value={Countries.name}>{Countries.name}</option>
+                                                        )
+                                                    })
+                                                }  
+                                            </select> 
                                             <label htmlFor="SelectCountry">Country</label>
                                         </div>
                                     </div>
                                     <div className='col-md-6'>
                                         <div className="form-floating">
-                                            <select className="form-select" id="SelectLanguage" onChange={(e) => setsearchLang(e.target.value)} value={searchLang}>
-                                                <option value="English">English</option>
-                                                <option value="Hindi">Hindi</option>
-                                                <option value="Arabic">Arabic</option>
+                                            <select className="form-select" id="SelectLanguage" onChange={(e) => setsearchLang(e.target.value)} value={searchLang} key={Language.name}>
+                                                {
+                                                    Language.map( Language => {
+                                                        return(
+                                                            <option value={Language.name}>{Language.name}</option>
+                                                        )
+                                                    })
+                                                }  
                                             </select>
                                             <label htmlFor="SelectCountry">Language</label>
                                         </div>
@@ -155,7 +164,7 @@ export default function LocationSearch() {
                                                 <th>Location</th>
                                                 <th>Language</th>
                                                 <th>Country</th>
-                                                <th>Search Engine</th>
+                                                {/* <th>Search Engine</th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -164,7 +173,7 @@ export default function LocationSearch() {
                                                 <td>{searchCity}</td>
                                                 <td>{searchLang}</td>
                                                 <td>{searchCountry}</td>
-                                                <td>{searchEngine}</td>
+                                                {/* <td>{searchEngine}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>
