@@ -16,7 +16,7 @@ export default function Footer() {
                                 <h4>Join 55,000+ savvy marketers</h4>
                             </div>
                             <div className='footer-text'>
-                                <p>Get the latest local SEO news, research, and tactical advice sent to your inbox.</p>
+                                <p>Be it the latest SEO news, analysis, or strategic advice, get everything right in your inbox!</p>
                             </div>
                             <form action="#" method="post" id="" name="" className="newsletter-subscribe" target="">
                                 <input type="email" name="EMAIL" className="form-control" id="" placeholder="Enter your email address" required="" />
@@ -33,13 +33,13 @@ export default function Footer() {
                                 <h4>Follow us on social and be part of the conversation</h4>
                             </div>
                             <div className='footer-text'>
-                                <p>Join the community of like-minded professionals, and stay up-to-date on all things local.</p>
+                                <p>Become a part of our community and stay in the loop with the latest happenings in the digital world!</p>
                             </div>
-                            {/* <ul>
+                            <ul>
                                 <li>
-                                    <a href='#' target='_blank'><i className="fa-brands fa-facebook-f"></i></a>
+                                    <a href='#s' target='_blank'><i className="fa fa-facebook" aria-hidden="true"></i></a>
                                 </li>
-                            </ul> */}
+                            </ul>
                         </div>
                     </div>
                 </div>

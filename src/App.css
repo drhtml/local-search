@@ -242,6 +242,154 @@ ul.pagelist li a:hover{
   gap: 10px;
   margin: 0 0 10px;
 }
+/*********SignUp*************/
+.SignUp-container {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+}
+.SignUp-loginFormContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex: 1;
+}
+.SignUp-loginForm-form {
+  width: 33.125rem;
+  padding: 1.875rem;
+  text-align: center; 
+}
+.SignUp-loginForm-form img {
+  max-width: 150px;
+  margin: 0 0 30px;
+}
+.SignUp-loginForm-form input.form-control {
+  border: 1px solid #9e005d;
+}
+.SignUp-loginForm-buttonsContainer .loginForm-button {
+  background: #9e005d;
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #9e005d;
+  width: 100%;
+  margin: 25px 0;
+  border-radius: 30px;
+  padding: 10px;
+}
+.SignUp-loginForm-form .form-check {
+  text-align: left;
+  margin: 0;
+}
+.SignUp-loginForm-form .check-forgot {
+  margin: 0 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.SignUp-loginForm-form .check-forgot a{
+  text-decoration: none;
+  color: #9e005d;
+}
+.SignUp-loginForm-form .form-check input {
+  border: 1px solid #9e005d;
+  border-radius: 0;
+}
+.SignUp-loginForm-form .form-check input.form-check-input:checked[type=checkbox] {
+  background: #fff; 
+  position: relative;
+}
+.SignUp-loginForm-form .form-check input.form-check-input:checked[type=checkbox]:after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #9e005d;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+ul.SignUp-loginForm-footer {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+}
+ul.SignUp-loginForm-footer li a {
+  text-decoration: none;
+  color: #9e005d;
+}
+.SignUp-presentationContainer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  background: #9e005d;
+  flex: 1;
+}
+.SignUp-presentationContainer-inner{
+  max-width: 43.75rem;
+  padding-left: 3.875rem;
+}
+.PromoteWhiteTheme-container h2 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 26px;
+  margin: 0 0 25px;
+  line-height: 42px;
+}
+.PromoteWhiteTheme-container h2 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 26px;
+  margin: 0 0 25px;
+  line-height: 42px;
+}
+.login-videoWrapper {
+  margin: 0 0 30px;
+}
+.login-videoWrapper img {
+  max-width: 100%;
+}
+.PromoteWhiteTheme-whatsNew {
+  margin: 0;
+}
+.enroll-btn {
+  background: #ffffff;
+  color: #9e005d;
+  font-weight: bold;
+  border: 1px solid #9e005d;
+  width: 100%;
+  max-width: 150px;
+  margin: 0 0 25px 0;
+  border-radius: 30px;
+  padding: 10px;
+}
+.enroll-btn:hover{
+  background: #9e005d;
+  color: #ffffff; 
+  border: 1px solid #ffffff;
+}
+.SignUp-bg{
+  background: #9e005d;
+  color: #fff;
+}
+.SignUp-bg .SignUp-loginForm-buttonsContainer .loginForm-button {
+  background: #ffffff;
+  color: #9e005d; 
+  border: 1px solid #ffffff; 
+}
+.SignUp-bg .SignUp-loginForm-form .check-forgot a,
+.SignUp-bg ul.SignUp-loginForm-footer li a {
+  text-decoration: underline;
+  color: #ffffff;
+}
+.SignUp-bg .form-floating>label {
+  color: #9e005d;
+}
 /*******************/
 .footer-btm {
   text-align: center;

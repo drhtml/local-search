@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import Countries from './countries.json';
-import Language from './language.json';
+import Countries from '../API/countries.json';
+import Language from '../API/language.json';
 
 import mainLogo from '../images/dd-log-10-years.png'
 import StarRating from '../images/star-dd.svg'
@@ -12,7 +12,7 @@ export default function LocationSearch() {
     const [searchCity, setSearchCity] = useState("");
     const [searchCountry, setsearchCountry] = useState("");
     const [searchLang, setsearchLang] = useState("");
-    const [searchEngine, setsearchEngine] = useState("");
+    //const [searchEngine, setsearchEngine] = useState("");
     const [searchUrl, setSeachUrl] = useState("");
     const [showResult, setshowResult] = useState(false);
 
@@ -58,17 +58,7 @@ export default function LocationSearch() {
         if (e.key === "Enter") {
             e.preventDefault();
             handleSearch();
-        }
-
-        // const response = {
-        //     statusCode: 200,
-        //     headers: {
-        //         "Access-Control-Allow-Headers" : "Content-Type",
-        //         "Access-Control-Allow-Origin": "http://localhost:3000/",
-        //         "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-        //     }
-        // };
-        // return response; 
+        } 
     };
 
     return (
@@ -81,7 +71,7 @@ export default function LocationSearch() {
                                 <div className="gm-header text-center">
                                     <h1>Local SERP Checker</h1>
                                     <aside className="sub-heading">
-                                        Check Google SERPs for any keyword. View localized search results for any country, city or ZIP code on Google and Google Maps.
+                                    Check localized search results here. Explore Google SERPs for any keyword and any locationusing country, city, or ZIP code.
                                     </aside>
                                 </div>
                             </div>
@@ -133,17 +123,17 @@ export default function LocationSearch() {
                                         </div>
                                     </div>
                                 </div>
-                                <h5 className='choose-search-engine'>Choose a Search Engine</h5>
+                                {/* <h5 className='choose-search-engine'>Choose a Search Engine</h5>
                                 <div className='select-search-engine'>
                                     <div className="form-check">
                                         <input className="form-check-input" type="radio" name="RadioGoogleSearch" id="RadioGoogleSearch" onChange={(e) => setsearchEngine(e.target.value)} value={searchEngine} />
                                         <label className="form-check-label" htmlFor="RadioGoogleSearch">Google Search</label>
                                     </div>
-                                    {/* <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="RadioGoogleSearch" id="RadioGoogleMaps" />
-                                    <label className="form-check-label" htmlFor="RadioGoogleMaps">Google Maps</label>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="radio" name="RadioGoogleSearch" id="RadioGoogleMaps" />
+                                        <label className="form-check-label" htmlFor="RadioGoogleMaps">Google Maps</label>
+                                    </div>
                                 </div> */}
-                                </div>
                                 <button type="button" className="btn form-submit-btn" onClick={handleSearch}>Check search results</button>
                             </form>
                         </div>
@@ -206,7 +196,7 @@ export default function LocationSearch() {
                         </div>
                         <div className='col-lg-7'>
                             <div className='ceo-msg'>
-                                <h5>"I recommend BrightLocal as a strong tool for anyone who is serious about local search. Having them on your side is like having full-time local SEO staff!"</h5>
+                                <h5>"Local SERP Checker is the quintessential tool for localized searches. It is like having adedicated team of local SEO experts at your disposal."</h5>
                                 <span className='name'>Rishi Rais</span>
                                 <span className='position'>CTO Dignitas Digital Pvt. Ltd.</span>
                             </div>
